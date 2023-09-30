@@ -1,0 +1,38 @@
+CREATE DATABASE `loja` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+CREATE TABLE `clientes` (
+  `nome` varchar(15) NOT NULL,
+  `sobrenome` varchar(100) NOT NULL,
+  `cpf` varchar(12) NOT NULL,
+  `cep` varchar(8) DEFAULT NULL,
+  `numeroCelular` varchar(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `sexo` char(1) NOT NULL,
+  PRIMARY KEY (`cpf`),
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
+) 
+
+CREATE TABLE `produtos` (
+  `id_produto` int NOT NULL AUTO_INCREMENT,
+  `nome_produto` varchar(45) NOT NULL,
+  `marca_produto` varchar(45) NOT NULL,
+  `preco_produto` double NOT NULL,
+  `quantidade_produto` int NOT NULL,
+  PRIMARY KEY (`id_produto`),
+  UNIQUE KEY `id_produto_UNIQUE` (`id_produto`)
+) 
+
+
+CREATE TABLE `compras` (
+  `idcompras` int NOT NULL AUTO_INCREMENT,
+  `cpf` varchar(11) DEFAULT NULL,
+  `nome_cliente` varchar(45) NOT NULL,
+  `sobrenome_cliente` varchar(100) NOT NULL,
+  `preco_total` double NOT NULL,
+  `quantidade_produtos` int NOT NULL,
+  `data_compra` date NOT NULL,
+  PRIMARY KEY (`idcompras`),
+  KEY `cpf_idx` (`cpf`),
+  CONSTRAINT `cpf` FOREIGN KEY (`cpf`) REFERENCES `clientes` (`cpf`)
+) 
+
