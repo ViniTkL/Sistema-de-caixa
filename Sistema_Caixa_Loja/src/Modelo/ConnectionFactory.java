@@ -11,7 +11,7 @@ public class ConnectionFactory {
     private static final String PASSWORD = "password";
 
     //caminho da database
-    private static final String DATABASE_URL = "jdbc:mysql://127.0.0.1:3306/loja?useTimezone=true&serverTimezone=UTC&useSSL=true&password=penis";
+    private static final String DATABASE_URL = "jdbc:mysql://127.0.0.1:3306/loja?useTimezone=true&serverTimezone=UTC";
 
     //conexão com a database
     public static Connection createConnectionToMySQL() throws Exception {
